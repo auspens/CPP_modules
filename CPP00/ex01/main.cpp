@@ -6,16 +6,16 @@
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:33:40 by auspensk          #+#    #+#             */
-/*   Updated: 2024/12/20 13:36:23 by auspensk         ###   ########.fr       */
+/*   Updated: 2025/01/06 15:55:04 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
 #include "PhoneBook.hpp"
 
 int	main(void)
 {
 	PhoneBook	my_book;
 
+	my_book.listen();
 	return (0);
 }

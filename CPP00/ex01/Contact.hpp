@@ -6,11 +6,15 @@
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:32:49 by auspensk          #+#    #+#             */
-/*   Updated: 2024/12/20 17:25:42 by auspensk         ###   ########.fr       */
+/*   Updated: 2025/01/06 15:08:23 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+
 class Contact
 {
 	std::string	_first_name;
@@ -33,7 +37,7 @@ public:
 	std::string getLastName(void) const;
 	void setLastName(std::string const &src);
 
-	std::string getNickname(void);
+	std::string getNickname(void) const;
 	void setNickname (std::string const &src);
 
 	std::string getSecret(void) const;
@@ -41,6 +45,8 @@ public:
 
 	int getPhone(void)const;
 	void setPhone(int const &src);
+
+	void displayContact(void);
 };
 
 
