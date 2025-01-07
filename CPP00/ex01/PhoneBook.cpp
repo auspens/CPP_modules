@@ -6,15 +6,16 @@
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:30:34 by auspensk          #+#    #+#             */
-/*   Updated: 2025/01/06 17:10:54 by auspensk         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:04:27 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
 
-PhoneBook::PhoneBook(){
-	_num_contacts = 0;
+PhoneBook::PhoneBook()
+		:_num_contacts(0), _total_contacts_entered(0), _contacts()
+{
 }
 
 PhoneBook::PhoneBook(PhoneBook const &src){
@@ -30,6 +31,7 @@ PhoneBook &	PhoneBook::operator=(PhoneBook const &other){
 		for (int i = 0; i < 8; i++)
 			_contacts[i] = other._contacts[i];
 		_num_contacts = other._num_contacts;
+		_total_contacts_entered = other._total_contacts_entered;
 	}
 	return(*this);
 }
@@ -40,7 +42,7 @@ void PhoneBook:: listen(void)
 	while (1)
 	{
 		std::cout << "Enter command (ADD, SEARCH or EXIT): " << std::endl;
-		std::cin >> cmd;
+		std::getline(std::cin, cmd);
 		if (cmd.compare("ADD") == 0)
 			add();
 		else if (cmd.compare("SEARCH") == 0)
@@ -51,53 +53,18 @@ void PhoneBook:: listen(void)
 			continue;
 	}
 }
+
 void PhoneBook:: add(void){
-	int i = _num_contacts%8;
+	int i = _total_contacts_entered%8;
 	std::string	str;
-	_contacts[i].setName("");
-	while (_contacts[i].getName().size() == 0)
-	{
-		std::cout<<"Enter contact name: "<<std::endl;
-		std::cin>>str;
-		_contacts[i].setName(str);
-	}
-	_contacts[i].setLastName("");
-	while (_contacts[i].getLastName().size() == 0)
-	{
-		std::cout<<"Enter contact last name: "<<std::endl;
-		std::cin>>str;
-		_contacts[i].setLastName(str);
-	}
-	_contacts[i].setNickname("");
-	while (_contacts[i].getNickname().size() == 0)
-	{
-		std::cout<<"Enter contact nickname: "<<std::endl;
-		std::cin>>str;
-		_contacts[i].setNickname(str);
-	}
-	str = "";
-	int num;
-	while (str.size() < 5)
-	{
-		std::cout << "Enter phone number, at least 5 digits without separators: " << std::endl;
-		std::cin >> str;
-		for(std::basic_string<char>::size_type j = 0; j < str.size(); j ++)
-		{
-			if(isdigit(str[j]) == 0)
-				str = "";
-		}
-	}
-	std::stringstream(str)>>num;
-	_contacts[i].setPhone(num);
-	_contacts[i].setSecret("");
-	while (_contacts[i].getSecret().size() == 0)
-	{
-		std::cout<<"Enter darkest secret: "<<std::endl;
-		std::cin>>str;
-		_contacts[i].setSecret(str);
-	}
+	_contacts[i].setName();
+	_contacts[i].setLastName();
+	_contacts[i].setNickname();
+	_contacts[i].setPhone();
+	_contacts[i].setSecret();
 	if (_num_contacts < 8)
 		++_num_contacts;
+	_total_contacts_entered++;
 }
 
 void PhoneBook:: search(){
@@ -107,21 +74,15 @@ void PhoneBook:: search(){
 		return ;
 	}
 	displayList();
-	int i = -1;
+	std::cout<<"\nEnter the index of contact (between 0 and " << _num_contacts - 1 << ") " <<std::endl;
 	std::string str;
-	while (1)
+	std::getline(std::cin, str);
+	while (!validIndex(str))
 	{
-		std::cout<<"\nEnter the index of contact (between 0 and " << _num_contacts - 1 << "): " <<std::endl;
-		std::cin >> str;
-		std::stringstream(str) >> i;
-		for(std::basic_string<char>::size_type j = 0; j < str.size(); j ++)
-		{
-			if(isdigit(str[j]) == 0)
-				continue;
-		}
-		if (i >=0 && i < _num_contacts)
-			break;
+		std::cout<<"\nInvalid index. Index should be between 0 and " << _num_contacts - 1 <<std::endl;
+		std::getline(std::cin, str);
 	}
+	int i = str[0] - '0';
 	_contacts[i].displayContact();
 }
 
@@ -154,4 +115,12 @@ void PhoneBook:: copyForDisplay(std::string& res, std::string const &src){
 		res = std::string(src, 0, 9) + ".";
 	else
 		res = std::string(src);
+}
+
+bool PhoneBook:: validIndex(std::string const &str){
+	if (str.length() != 1)
+		return false;
+	if (str[0] < '0' || str[0] > '0' + _num_contacts - 1)
+		return false;
+	return true;
 }

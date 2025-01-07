@@ -6,9 +6,12 @@
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:32:49 by auspensk          #+#    #+#             */
-/*   Updated: 2025/01/06 15:08:23 by auspensk         ###   ########.fr       */
+/*   Updated: 2025/01/07 13:49:42 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
 #include <string>
 #include <sstream>
@@ -32,21 +35,21 @@ public:
 	Contact &operator=(Contact const &other);
 
 	std::string getName(void) const;
-	void setName(std::string const &src);
+	void setName(void);
 
 	std::string getLastName(void) const;
-	void setLastName(std::string const &src);
+	void setLastName(void);
 
 	std::string getNickname(void) const;
-	void setNickname (std::string const &src);
+	void setNickname (void);
 
 	std::string getSecret(void) const;
-	void setSecret(std::string const &src);
+	void setSecret(void);
 
 	int getPhone(void)const;
-	void setPhone(int const &src);
+	void setPhone(void);
 
 	void displayContact(void);
 };
 
-
+#endif
