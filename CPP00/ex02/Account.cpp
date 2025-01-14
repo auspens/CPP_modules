@@ -6,7 +6,7 @@
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:32:03 by auspensk          #+#    #+#             */
-/*   Updated: 2025/01/07 17:01:45 by auspensk         ###   ########.fr       */
+/*   Updated: 2025/01/14 10:51:13 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 #include <sstream>
 #include <iostream>
 #include <iomanip>
+#include <time.h>
 
-int	_nbAccounts = 0;
-int	_totalAmount = 0;
-int	_totalNbDeposits = 0;
-int	_totalNbWithdrawals = 0;
+int	Account::_nbAccounts = 0;
+int	Account::_totalAmount = 0;
+int	Account::_totalNbDeposits = 0;
+int	Account::_totalNbWithdrawals = 0;
 
 int Account::getNbAccounts(void){return Account::_nbAccounts;}
 
@@ -108,5 +109,10 @@ void Account::displayStatus(void) const {
 }
 
 void Account::_displayTimestamp(void){
-	
+	time_t rawtime;
+	struct tm *timeinfo;
+	time(&rawtime);
+	timeinfo = localtime(&rawtime);
+	std::cout << "[" << timeinfo->tm_year + 1900 << timeinfo->tm_mon + 1 << timeinfo->tm_mday
+			<<"_" << timeinfo->tm_hour <<timeinfo->tm_min << timeinfo->tm_sec << "]";
 }
