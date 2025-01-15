@@ -6,14 +6,14 @@
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:33:09 by auspensk          #+#    #+#             */
-/*   Updated: 2025/01/07 13:15:19 by auspensk         ###   ########.fr       */
+/*   Updated: 2025/01/15 10:01:13 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
 Contact::Contact()
-		: _first_name(""), _last_name(""), _nickname(""), _secret(""), _phone_num(0)
+		: _first_name(""), _last_name(""), _nickname(""), _secret(""), _phone_num("")
 {
 }
 
@@ -21,7 +21,7 @@ Contact::Contact(Contact const &src){
 	*this = src;
 }
 
-Contact::Contact(std::string name, std::string last_name, std::string nick, std::string secret, int num)
+Contact::Contact(std::string name, std::string last_name, std::string nick, std::string secret, std::string num)
 			:_first_name(name), _last_name(last_name), _nickname(nick), _secret(secret), _phone_num(num)
 {
 }
@@ -42,6 +42,7 @@ Contact & Contact::operator=(Contact const &other)
 std::string Contact ::getName(void) const{
 	return (_first_name);
 }
+
 void Contact::setName(void){
 	while (1)
 	{
@@ -51,9 +52,11 @@ void Contact::setName(void){
 			break;
 	}
 }
+
 std::string Contact ::getLastName(void) const{
 	return (_last_name);
 }
+
 void Contact::setLastName(void){
 	while (1)
 	{
@@ -63,9 +66,11 @@ void Contact::setLastName(void){
 			break;
 	}
 }
+
 std::string Contact ::getNickname(void) const{
 	return (_nickname);
 }
+
 void Contact::setNickname(void){
 	while (1)
 	{
@@ -75,9 +80,11 @@ void Contact::setNickname(void){
 			break;
 	}
 }
+
 std::string Contact ::getSecret(void) const{
 	return (_secret);
 }
+
 void Contact::setSecret(void){
 	while (1)
 	{
@@ -87,23 +94,25 @@ void Contact::setSecret(void){
 			break;
 	}
 }
-int Contact ::getPhone(void) const{
+std::string Contact ::getPhone(void) const{
 	return (_phone_num);
 }
+
 void Contact::setPhone(void){
-	std::string str = "";
-	while (str.size() < 5)
+	while (1)
 	{
-		std::cout << "Enter phone number, at least 5 digits without separators: " << std::endl;
-		std::getline(std::cin, str);
-		for(std::basic_string<char>::size_type j = 0; j < str.size(); j ++)
+		std::cout<<"Enter phone number, at least 5 digits without separators: "<<std::endl;
+		std::getline(std::cin, _phone_num);
+		for(std::basic_string<char>::size_type j = 0; j < _phone_num.size(); j ++)
 		{
-			if(isdigit(str[j]) == 0)
-				str = "";
+			if(isdigit(_phone_num[j]) == 0)
+				_phone_num = "";
 		}
+		if (_phone_num.length() > 4)
+			break;
 	}
-	std::stringstream(str)>>_phone_num;
 }
+
 void Contact:: displayContact(void){
 	std::cout << "Name: " << getName()
 			<< "\nLast name: " << getLastName()

@@ -6,7 +6,7 @@
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:32:49 by auspensk          #+#    #+#             */
-/*   Updated: 2025/01/07 13:49:42 by auspensk         ###   ########.fr       */
+/*   Updated: 2025/01/15 09:56:23 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ class Contact
 	std::string	_last_name;
 	std::string	_nickname;
 	std::string	_secret;
-	int			_phone_num;
+	std::string	_phone_num;
 
 public:
 	Contact();
 	Contact(Contact const &src);
-	Contact(std::string name, std::string last_name, std::string nick, std::string secret, int num);
+	Contact(std::string name, std::string last_name, std::string nick, std::string secret, std::string num);
 	~Contact();
 
 	Contact &operator=(Contact const &other);
@@ -46,7 +46,7 @@ public:
 	std::string getSecret(void) const;
 	void setSecret(void);
 
-	int getPhone(void)const;
+	std::string getPhone(void)const;
 	void setPhone(void);
 
 	void displayContact(void);
