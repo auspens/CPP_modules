@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 16:47:23 by auspensk          #+#    #+#             */
-/*   Updated: 2025/01/20 16:51:55 by auspensk         ###   ########.fr       */
+/*   Created: 2025/01/20 13:09:50 by auspensk          #+#    #+#             */
+/*   Updated: 2025/01/20 17:05:26 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#include<iostream>
-#include<string>
+#include "Harl.hpp"
 
-
-class Harl{
-	public:
-		Harl();
-		Harl(Harl const & src);
-		Harl & operator=(Harl const & other);
-		~Harl();
-		void complain( std::string level );
-
-	private:
-		std::string levels[4] ;
-		void(Harl:: *func [4])(void);
-
-		void debug( void );
-		void info( void );
-		void warning( void );
-		void error( void );
-};
+int main(void){
+	Harl harl;
+	std::string listOfComplaints[] = {"debug", "warning", "info", "error", "blabla"};
+	for (unsigned int i = 0; i < sizeof(listOfComplaints)/sizeof(listOfComplaints[0]); i++)
+	{
+		std::cout << "Complaint: " << listOfComplaints[i] << std::endl;
+		harl.complain(listOfComplaints[i]);
+	}
+}
