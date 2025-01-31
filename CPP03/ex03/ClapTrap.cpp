@@ -6,7 +6,7 @@
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:48:54 by auspensk          #+#    #+#             */
-/*   Updated: 2025/01/31 10:16:53 by auspensk         ###   ########.fr       */
+/*   Updated: 2025/01/31 14:05:40 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ ClapTrap & ClapTrap::operator=(ClapTrap const & other){
 	}
 	return *this;
 }
-ClapTrap::~ClapTrap(){std::cout << "ClaprTrap destructor" << std::endl;};
+ClapTrap::~ClapTrap(){std::cout << "ClapTrap destructor" << std::endl;};
 
 void ClapTrap::attack(const std::string& target){
 	switch (energy_points)

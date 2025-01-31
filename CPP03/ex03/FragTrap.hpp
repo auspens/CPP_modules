@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 17:43:48 by auspensk          #+#    #+#             */
-/*   Updated: 2025/01/31 10:17:11 by auspensk         ###   ########.fr       */
+/*   Created: 2025/01/31 14:17:54 by auspensk          #+#    #+#             */
+/*   Updated: 2025/01/31 17:27:37 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #include "ClapTrap.hpp"
 
-int main(void){
-	ClapTrap claptrap("Claptrap");
-	ClapTrap claptrap2("ClapTrap2");
-
-	claptrap.attack("Claptrap2");
-	claptrap2.takeDamage(5);
-	claptrap2.takeDamage(6);
-	claptrap2.takeDamage(1);
-	claptrap2.beRepaired(7);
-	for(int i = 0; i<5; ++i)
-		claptrap2.attack("Claptrap");
-}
+class FragTrap : virtual public ClapTrap{
+	protected:
+		FragTrap();
+	public:
+		FragTrap(std::string name);
+		FragTrap(FragTrap const & src);
+		FragTrap& operator=(FragTrap const & other);
+		~FragTrap();
+		void highFivesGuys(void);
+};

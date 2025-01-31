@@ -6,21 +6,25 @@
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 17:43:48 by auspensk          #+#    #+#             */
-/*   Updated: 2025/01/31 10:17:11 by auspensk         ###   ########.fr       */
+/*   Updated: 2025/01/31 14:06:51 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main(void){
 	ClapTrap claptrap("Claptrap");
-	ClapTrap claptrap2("ClapTrap2");
+	ScavTrap scavtrap("ScavTrap");
 
-	claptrap.attack("Claptrap2");
-	claptrap2.takeDamage(5);
-	claptrap2.takeDamage(6);
-	claptrap2.takeDamage(1);
-	claptrap2.beRepaired(7);
+	claptrap.attack("ScavTrap");
+	scavtrap.takeDamage(95);
+	scavtrap.takeDamage(7);
+	scavtrap.takeDamage(1);
+	scavtrap.beRepaired(15);
 	for(int i = 0; i<5; ++i)
-		claptrap2.attack("Claptrap");
+		scavtrap.attack("Claptrap");
+	scavtrap.guardGate();
+	ScavTrap scavtrap2 ("Scavtrap2");
+	ClapTrap *claptrap_ptr = &scavtrap2;
+	claptrap_ptr->attack("Claptrap");
 }

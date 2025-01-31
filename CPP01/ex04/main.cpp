@@ -37,7 +37,7 @@ int	main(int argc, char *argv[]){
 
 	size_t found = fileContents.find(argv[2]); //find a match, erase it, replace with s2 in a loop. do not search already checked section
 	size_t srcLen = strlen(argv[2]);
-	size_t dstLen = strlen(argv[3]) - 1;
+	size_t dstLen = strlen(argv[3]);
 	while (found != std::string::npos)
 	{
 		fileContents.erase(found, srcLen);

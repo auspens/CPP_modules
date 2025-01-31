@@ -6,21 +6,29 @@
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 17:43:48 by auspensk          #+#    #+#             */
-/*   Updated: 2025/01/31 10:17:11 by auspensk         ###   ########.fr       */
+/*   Updated: 2025/01/31 14:47:20 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main(void){
 	ClapTrap claptrap("Claptrap");
-	ClapTrap claptrap2("ClapTrap2");
+	ScavTrap scavtrap("ScavTrap");
+	FragTrap fragtrap("Fragtrap");
 
-	claptrap.attack("Claptrap2");
-	claptrap2.takeDamage(5);
-	claptrap2.takeDamage(6);
-	claptrap2.takeDamage(1);
-	claptrap2.beRepaired(7);
-	for(int i = 0; i<5; ++i)
-		claptrap2.attack("Claptrap");
+	claptrap.attack("ScavTrap");
+	fragtrap.attack("ScavTrap");
+	scavtrap.takeDamage(95);
+	scavtrap.beRepaired(15);
+	scavtrap.guardGate();
+	fragtrap.highFivesGuys();
+
+	ScavTrap scavtrap2 ("Scavtrap2");
+	FragTrap fragtrap2 ("Fragtrap2");
+	ClapTrap *claptrap_ptr = &scavtrap2;
+	claptrap_ptr->attack("Claptrap");
+	claptrap_ptr = &fragtrap2;
+	claptrap_ptr->attack("Fragtrap");
 }
