@@ -6,7 +6,7 @@
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:48:54 by auspensk          #+#    #+#             */
-/*   Updated: 2025/01/31 14:05:40 by auspensk         ###   ########.fr       */
+/*   Updated: 2025/02/05 10:29:53 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@ ClapTrap::ClapTrap(std::string name): name(name), hit_points(10), energy_points(
 									attack_damage(0){std::cout << "ClapTrap name constructor" << std::endl;}
 ClapTrap::ClapTrap(ClapTrap const &src): name(src.name), hit_points(src.hit_points),
 										energy_points(src.energy_points), attack_damage(src.attack_damage){
-std::cout << "ClaprTrap copy constructor" << std::endl;
+std::cout << "ClapTrap copy constructor" << std::endl;
 }
+ClapTrap::ClapTrap(std::string name_e, unsigned int hp, unsigned int ep, unsigned int ad)
+					: name(name_e), hit_points(hp), energy_points(ep), attack_damage(ad){
+						std::cout << "ClapTrap all values constructor" << std::endl;
+					}
 ClapTrap & ClapTrap::operator=(ClapTrap const & other){
 	std::cout << "ClapTrap assignment operator" << std::endl;
 	if(this != &other){
@@ -30,6 +34,8 @@ ClapTrap & ClapTrap::operator=(ClapTrap const & other){
 	return *this;
 }
 ClapTrap::~ClapTrap(){std::cout << "ClapTrap destructor" << std::endl;};
+unsigned int ClapTrap::getHP() const { return hit_points; }
+unsigned int ClapTrap::getAD()const { return attack_damage;}
 
 void ClapTrap::attack(const std::string& target){
 	switch (energy_points)
@@ -71,5 +77,10 @@ void ClapTrap::beRepaired(unsigned int amount){
 		energy_points -= delta;
 		break;
 	}
+}
+
+void ClapTrap::printValues(){
+	std::cout << "ClapTrap named " << name << " Energy points " << energy_points
+			<< " Attack damage " << attack_damage << " Hit points " << hit_points << std::endl;
 }
 

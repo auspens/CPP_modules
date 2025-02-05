@@ -6,7 +6,7 @@
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:15:35 by auspensk          #+#    #+#             */
-/*   Updated: 2025/01/31 13:49:24 by auspensk         ###   ########.fr       */
+/*   Updated: 2025/02/04 17:17:26 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name){
 	hit_points = 100;
 	energy_points = 50;
 }
+
+ScavTrap::ScavTrap(std::string name_e, unsigned int hp, unsigned int ep, unsigned int ad)
+	: ClapTrap(name_e, hp, ep, ad) {std::cout << "ScavTrap all values constructor" << std::endl;}
+
 ScavTrap::ScavTrap(ScavTrap const & src) : ClapTrap(src){
 	std::cout << "ScavTrap copy constructor" << std::endl;
 }

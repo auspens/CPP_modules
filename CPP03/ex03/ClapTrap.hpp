@@ -6,10 +6,9 @@
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:40:19 by auspensk          #+#    #+#             */
-/*   Updated: 2025/01/31 13:33:36 by auspensk         ###   ########.fr       */
+/*   Updated: 2025/02/04 17:23:57 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #pragma once
 #include <string>
@@ -17,18 +16,22 @@
 
 class ClapTrap{
 	protected:
-		ClapTrap();
 		std::string name;
 		unsigned int hit_points;
 		unsigned int energy_points;
 		unsigned int attack_damage;
+		ClapTrap();
 	public:
-		ClapTrap(std::string name);
+		ClapTrap(std::string name_e);
 		ClapTrap(ClapTrap const & src);
+		ClapTrap(std::string name_e, unsigned int hp, unsigned int ep, unsigned int ad);
 		ClapTrap& operator=(ClapTrap const & other);
 		~ClapTrap();
 
-		virtual void attack(const std::string& target);
+		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
+		void printValues();
+		unsigned int getHP() const;
+		unsigned int getAD() const;
 };

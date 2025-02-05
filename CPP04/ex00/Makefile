@@ -2,17 +2,18 @@ NAME = exec
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = ClapTrap.cpp \
-		ScavTrap.cpp \
-		FragTrap.cpp \
-		DiamondTrap.cpp \
+SRC = Animal.cpp \
+		Dog.cpp \
+		Cat.cpp \
+		WrongAnimal.cpp \
+		WrongCat.cpp \
 		main.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
-HDR = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp
+HDR = Animal.hpp Dog.hpp Cat.hpp WrongAnimal.hpp WrongCat.hpp
 
 all: $(NAME)
 
