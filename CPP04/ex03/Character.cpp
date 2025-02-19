@@ -6,7 +6,7 @@
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:24:51 by auspensk          #+#    #+#             */
-/*   Updated: 2025/02/19 13:30:57 by auspensk         ###   ########.fr       */
+/*   Updated: 2025/02/19 14:03:05 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void Character::equip(AMateria* m){
 }
 
 void Character::unequip(int idx){
-	if (this->inv[idx]){
+	if (idx >=0 && idx <4 && this->inv[idx]){
 		this->inv[idx]->unsetEquipped();
 		this->inv[idx] = NULL;
 		return ;
@@ -86,7 +86,7 @@ void Character::unequip(int idx){
 }
 
 void Character::use(int idx, ICharacter& target){
-	if(this->inv[idx]){
+	if(idx >=0 && idx <4 && this->inv[idx]){
 		this->inv[idx]->use(target);
 		return;
 	}
