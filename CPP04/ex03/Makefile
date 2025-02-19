@@ -4,15 +4,16 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = Animal.cpp \
-		Dog.cpp \
-		Cat.cpp \
-		Brain.cpp \
+SRC = AMateria.cpp \
+		Character.cpp \
+		Cure.cpp \
+		Ice.cpp \
 		main.cpp \
+		MateriaSource.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-HDR = Animal.hpp Dog.hpp Cat.hpp Brain.hpp
+HDR = AMateria.hpp Character.hpp Cure.hpp Ice.hpp ICharacter.hpp IMateriaSource.hpp
 
 all: $(NAME)
 
