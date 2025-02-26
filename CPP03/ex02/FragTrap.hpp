@@ -6,7 +6,7 @@
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:17:54 by auspensk          #+#    #+#             */
-/*   Updated: 2025/01/31 17:06:22 by auspensk         ###   ########.fr       */
+/*   Updated: 2025/02/17 13:52:49 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,4 @@ class FragTrap : public ClapTrap{
 		FragTrap& operator=(FragTrap const & other);
 		~FragTrap();
 		void highFivesGuys(void);
-		void attack(const std::string& target);
 };

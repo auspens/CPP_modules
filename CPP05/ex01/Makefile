@@ -4,28 +4,24 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-OBJECTS = ../objects
-
-SRC = ClapTrap.cpp \
-		ScavTrap.cpp \
+SRC = Bureaucrat.cpp \
+		Form.cpp \
 		main.cpp \
 
-OBJ = $(addprefix $(OBJECTS)/, $(SRC:.cpp=.o))
+OBJ = $(SRC:.cpp=.o)
 
-HDR = ClapTrap.hpp ScavTrap.hpp
+HDR = Bureaucrat.hpp Form.hpp
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-$(OBJECTS)/%.o: %.cpp $(HDR)
-	@mkdir -p $(OBJECTS)
+%.o: %.cpp $(HDR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
-	rm -rf $(OBJECTS)
 
 fclean: clean
 	rm -f $(NAME)

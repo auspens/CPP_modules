@@ -6,15 +6,18 @@
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:15:35 by auspensk          #+#    #+#             */
-/*   Updated: 2025/02/04 16:11:25 by auspensk         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:49:24 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap(){};
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20){
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name){
 	std::cout << "ScavTrap name constructor" << std::endl;
+	attack_damage = 20;
+	hit_points = 100;
+	energy_points = 50;
 }
 ScavTrap::ScavTrap(ScavTrap const & src) : ClapTrap(src){
 	std::cout << "ScavTrap copy constructor" << std::endl;

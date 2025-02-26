@@ -4,13 +4,15 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++98
 
+OBJECTS = ../objects
+
 SRC = ClapTrap.cpp \
 		ScavTrap.cpp \
 		FragTrap.cpp \
 		DiamondTrap.cpp \
 		main.cpp \
 
-OBJ = $(SRC:.cpp=.o)
+OBJ = $(addprefix $(OBJECTS)/, $(SRC:.cpp=.o))
 
 HDR = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp
 
@@ -19,11 +21,13 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp $(HDR)
+$(OBJECTS)/%.o: %.cpp $(HDR)
+	@mkdir -p $(OBJECTS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
+	rm -rf $(OBJECTS)
 
 fclean: clean
 	rm -f $(NAME)
