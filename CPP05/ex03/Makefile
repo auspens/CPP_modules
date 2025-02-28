@@ -12,6 +12,7 @@ SRC = src/Bureaucrat.cpp \
 		src/PresidentialPardonForm.cpp \
 		src/ShrubberyCreationForm.cpp \
 		src/RobotomyRequestForm.cpp \
+		src/Intern.cpp
 
 OBJ = $(SRC:src/%.cpp=$(OBJ_DIR)/%.o)
 
@@ -20,6 +21,7 @@ HDR = includes/Bureaucrat.hpp \
 		includes/PresidentialPardonForm.hpp \
 		includes/RobotomyRequestForm.hpp \
 		includes/ShrubberyCreationForm.hpp \
+		includes/Intern.hpp
 
 all: $(NAME)
 
@@ -41,3 +43,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
