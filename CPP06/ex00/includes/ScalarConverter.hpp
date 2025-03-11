@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    ScalarConverter.hpp                               :+:      :+:    :+:   */
+/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 16:08:53 by auspensk          #+#    #+#             */
-/*   Updated: 2025/02/28 17:52:40 by auspensk         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:52:46 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 #include <iostream>
 #include <string>
 #include <cctype>
+#include <stdexcept>
+#include <sstream>
+#include <limits>
+#include <climits>
+#include <cmath>
+#include <iomanip> 
+#include "conversionException.hpp"
+#include "madPrinter.hpp"
 
 class ScalarConverter{
 
@@ -29,10 +37,14 @@ class ScalarConverter{
 		CHAR,
 		INT,
 		FLOAT,
-		DOUBLE
+		DOUBLE,
+		UNDEFINED
 	}type_e;
+
 	type detectType(std::string const &str);
-	int parseInt(std::string const &str);
-	float parseFloat(std::string const &str);
-	double parseDouble(std::string const &str);
+	void handleInt(std::string const &str);
+	void handleFloat(std::string const &str);
+	void handleDouble(std::string const &str);
+	void handleChar(std::string const &str);
+
 };
