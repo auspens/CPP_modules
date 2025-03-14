@@ -6,7 +6,7 @@
 /*   By: auspensk <auspensk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 12:14:21 by auspensk          #+#    #+#             */
-/*   Updated: 2025/03/11 16:54:30 by auspensk         ###   ########.fr       */
+/*   Updated: 2025/03/14 10:04:48 by auspensk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void ScalarConverter::handleInt(std::string const &str){
 void ScalarConverter::handleFloat(std::string const & str){
 	madPrinter printer;
 	float f;
-	//check for infinity and not a number
+	//check for infinity and NaN
 	if (str == "inff")
 		f = std::numeric_limits<float>::infinity();
 	else if (str == "-inff")
@@ -63,7 +63,7 @@ void ScalarConverter::handleFloat(std::string const & str){
 void ScalarConverter::handleDouble(std::string const &str){
 	madPrinter printer;
 	double d;
-	//check for infinity and not a number
+	//check for infinity and NaN
 	if (str == "inf")
 		d = std::numeric_limits<double>::infinity();
 	else if (str == "-inf")
@@ -72,7 +72,7 @@ void ScalarConverter::handleDouble(std::string const &str){
 		d = std::numeric_limits<double>::quiet_NaN();
 	//parse value, check for errors
 	else{
-		std::istringstream stream(str.substr(0, str.length()));
+		std::istringstream stream(str);
 		stream>>d;
 		if (stream.fail()){
 			throw conversionException("Could not convert float literal");
