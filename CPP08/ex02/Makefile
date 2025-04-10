@@ -7,11 +7,11 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 OBJ_DIR = obj
 
 SRC = 	main.cpp \
-		Span.cpp
+
 
 OBJ = $(SRC:src/%.cpp=$(OBJ_DIR)/%.o)
 
-HDR = Span.hpp
+HDR = MutantStack.hpp
 
 all: $(NAME)
 

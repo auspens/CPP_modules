@@ -13,32 +13,38 @@
 #include "Span.hpp"
 
 
-void Span::add(int value){
+void Span::addNumber(int value){
 	if (_set.size() == _size)
 		throw SpanException("Container is full");
 	_set.insert(value);
 }
+
 int Span::shortestSpan(){
 	if(_set.size() < 2)
-		throw SpanException("Less than two objects in the collection");
+		throw SpanException
+			("Less than two objects in the collection");
 	int res = this->longestSpan();
-	std::set<int>::iterator it = _set.begin();
-	for (; it != _set.end(); ++it)
-	{
-		if ((*(it + 1) - *it) > longestSpan)
-			longestSpan = *(it + 1) - *it;
-	}
-
+	std::set<int>::iterator it1 = _set.begin();
+	std::set<int>::iterator it2 = _set.begin();
+	++it2;
+	res = *it2 - *it1;
+	for (; it2 != _set.end(); ++it2, ++it1)
+		res=std::min(res, *it2 - *it1);
+	return res;
 }
+
 int Span::longestSpan(){
 	if(_set.size() < 2)
-		throw SpanException("Less than two objects in the collection");
-	return *_set.end() - *_set.begin();}
-
+		throw SpanException
+			("Less than two objects in the collection");
+	return *_set.rbegin() - *_set.begin();
+}
 
 Span::Span(){}
 Span::~Span(){}
-Span::Span(Span const &src): _set(src._set), _size(src._size){}
+Span::Span(Span const &src)
+		: _set(src._set)
+		, _size(src._size){}
 Span &Span::operator=(Span const &other){
 	if (this != &other){
 		this->_set = other._set;
@@ -46,9 +52,11 @@ Span &Span::operator=(Span const &other){
 	}
 	return *this;
 }
-Span::Span(int size):_set(std::set<int>()), _size(size){}
+Span::Span(unsigned int size)
+		:_set()
+		, _size(size){}
 
-
-Span::ContainerFullException::ContainerFullException(std::string error)throw():_error(error){}
-Span::ContainerFullException::~ContainerFullException() throw(){}
-const char* Span::ContainerFullException::what() const throw(){return _error.c_str();}
+Span::SpanException::SpanException(std::string error)throw()
+					:_error(error){}
+Span::SpanException::~SpanException() throw(){}
+const char* Span::SpanException::what() const throw(){return _error.c_str();}

@@ -14,13 +14,23 @@
 #include <set>
 #include <exception>
 #include <string>
+#include <iterator>
+#include <algorithm>
 
 class Span{
 	public:
-		void add(int value);
+		void addNumber(int value);
+		template <typename InputIterator>
+			void addRange(const InputIterator start, 
+							const InputIterator end){
+								if (_set.size() + std::distance(start, end) > _size)
+									throw SpanException("Range exceeds container capacity");
+								_set.insert(start, end);
+							}
 		int shortestSpan();
 		int longestSpan();
-		Span(int N);
+		Span(unsigned int N);
+		~Span();
 		Span(Span const &src);
 		Span &operator=(Span const &other);
 
@@ -35,7 +45,6 @@ class Span{
 		};
 	private:
 		Span();
-		~Span();
 		std::multiset<int> _set;
 		unsigned int _size;
 };

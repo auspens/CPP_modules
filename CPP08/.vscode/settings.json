@@ -1,0 +1,8 @@
+{
+	"files.associations": {
+		"concepts": "cpp",
+		"vector": "cpp",
+		"queue": "cpp",
+		"stack": "cpp"
+	}
+}
